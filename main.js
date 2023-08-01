@@ -6,7 +6,8 @@ $(function() {
 
   zipcode.on('input', function() {
     address.val('');
-    inputZipcode = zipcode.val().replace('-', '');
+    inputZipcode = $(this).val();
+    $(this).val(inputZipcode.replace(/[^0-9]/g, ''));
     const isValidInput = $.isNumeric(inputZipcode) && inputZipcode.length === 7;
     isValidInput ? searchButton.prop('disabled', false) : searchButton.prop('disabled', true);
   });
