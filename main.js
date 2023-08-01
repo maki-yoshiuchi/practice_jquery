@@ -1,7 +1,7 @@
 $(function() {
-  const zipcode = $('.zipcode');
-  const searchButton = $('.search_button');
-  const address = $('.address');
+  const zipcode = $('.js-zipcode');
+  const searchButton = $('.js-search-button');
+  const address = $('.js-address');
   let inputZipcode;
 
   zipcode.on('input', function() {
