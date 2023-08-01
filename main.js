@@ -1,25 +1,29 @@
 $(function() {
+  const zipcode = $('.zipcode');
+  const searchButton = $('.search_button');
+  const address = $('.address');
   let inputZipcode;
 
-  $('.zipcode').on('input', function() {
-    inputZipcode = $('.zipcode').val().replace('-','');
-    $('.address').val('');
+  zipcode.on('input', function() {
+    inputZipcode = zipcode.val().replace('-','');
+    address.val('');
 
     if ($.isNumeric(inputZipcode) && inputZipcode.length === 7) {
-      $('.search_button').prop('disabled', false);
+      searchButton.prop('disabled', false);
     } else {
-      $('.search_button').prop('disabled', true);
+      searchButton.prop('disabled', true);
     }
   });
 
-  $('.search_button').on('click', function() {
+  searchButton.on('click', function() {
     $.ajax({
       url: 'https://zipcloud.ibsnet.co.jp/api/search?zipcode=' + inputZipcode,
       type: 'GET',
     }).done(function(data) {
-      const response = JSON.parse(data)
-      if (response['results']) {
-        $('.address').val(response['results'][0]['address1'] + response['results'][0]['address2'] + response['results'][0]['address3']);
+      const response = JSON.parse(data).results;
+      if (response) {
+        const result = response[0];
+        address.val(result.address1 + result.address2 + result.address3);
       } else {
         alert('その郵便番号は存在しません');
       }
