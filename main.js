@@ -5,14 +5,10 @@ $(function() {
   let inputZipcode;
 
   zipcode.on('input', function() {
-    inputZipcode = zipcode.val().replace('-','');
     address.val('');
-
-    if ($.isNumeric(inputZipcode) && inputZipcode.length === 7) {
-      searchButton.prop('disabled', false);
-    } else {
-      searchButton.prop('disabled', true);
-    }
+    inputZipcode = zipcode.val().replace('-','');
+    const isValidInput = $.isNumeric(inputZipcode) && inputZipcode.length === 7;
+    isValidInput ? searchButton.prop('disabled', false) : searchButton.prop('disabled', true);
   });
 
   searchButton.on('click', function() {
