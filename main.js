@@ -6,14 +6,14 @@ $(function() {
 
   zipcode.on('input', function() {
     address.val('');
-    inputZipcode = zipcode.val().replace('-','');
+    inputZipcode = zipcode.val().replace('-', '');
     const isValidInput = $.isNumeric(inputZipcode) && inputZipcode.length === 7;
     isValidInput ? searchButton.prop('disabled', false) : searchButton.prop('disabled', true);
   });
 
   searchButton.on('click', function() {
     $.ajax({
-      url: 'https://zipcloud.ibsnet.co.jp/api/search?zipcode=' + inputZipcode,
+      url: `https://zipcloud.ibsnet.co.jp/api/search?zipcode=${inputZipcode}`,
       type: 'GET',
     }).done(function(data) {
       const response = JSON.parse(data).results;
