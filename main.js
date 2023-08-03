@@ -18,12 +18,12 @@ $(function() {
       type: 'GET',
     }).done(function(data) {
       const results = JSON.parse(data).results;
-      if (results) {
-        const [{address1, address2, address3}] = results;
-        $address.val(address1 + address2 + address3);
-      } else {
+      if (!results) {
         alert('その郵便番号は存在しません');
+        return;
       }
+      const [{address1, address2, address3}] = results;
+      $address.val(address1 + address2 + address3);
     }).fail(function() {
       alert('しばらく経ってからもう一度お試しください');
     });
