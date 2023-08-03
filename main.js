@@ -19,7 +19,7 @@ $(function() {
     }).done(function(data) {
       const response = JSON.parse(data).results;
       if (response) {
-        const {address1, address2, address3} = response[0];
+        const [{address1, address2, address3}] = response;
         address.val(address1 + address2 + address3);
       } else {
         alert('その郵便番号は存在しません');
