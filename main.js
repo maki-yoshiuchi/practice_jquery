@@ -9,8 +9,8 @@ $(function() {
     inputZipcode = $(this).val();
     $(this).val(inputZipcode.replace(/[^\d-]/g, ''));
     inputZipcode = inputZipcode.replace('-','');
-    const isValidInput = $.isNumeric(inputZipcode) && inputZipcode.length === 7;
-    $searchButton.prop('disabled', !isValidInput);
+    const isInvalidInput = !$.isNumeric(inputZipcode) || inputZipcode.length !== 7;
+    $searchButton.prop('disabled', isInvalidInput);
   });
 
   $searchButton.on('click', function() {
