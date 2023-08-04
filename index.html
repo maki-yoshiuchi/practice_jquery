@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>郵便番号</title>
+</head>
+
+<body>
+  <table>
+    <tbody>
+      <tr>
+        <th>郵便番号</th>
+        <td>
+          <input type="text" class="js-zipcode">
+        </td>
+        <td>
+          <button type="button" class="js-search-button" disabled>住所を探す</button>
+        </td>
+      </tr>
+      <tr>
+        <th>住所</th>
+        <td colspan="2">
+          <textarea class="js-address" rows="5" cols="30"></textarea>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <script src="https://code.jquery.com/jquery.min.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
