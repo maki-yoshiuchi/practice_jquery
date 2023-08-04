@@ -18,7 +18,7 @@ $(function() {
       url: `https://zipcloud.ibsnet.co.jp/api/search?zipcode=${inputZipcode}`,
       type: 'GET',
     }).done(function(data) {
-      const results = JSON.parse(data).results;
+      const {results} = JSON.parse(data);
       if (!results) {
         alert('その郵便番号は存在しません');
         return;
